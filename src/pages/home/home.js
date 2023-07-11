@@ -7,21 +7,22 @@ import { makeStyles } from "@mui/styles";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import './home.css';
 import ProductImg from '../../assets/Image.png'
-import { Box, Button, Stack, Grid } from "@mui/material";
-import { productData } from "../../constant/constant";
-import ProductDetails from '../../components/productDetails/productDetails'
+import { Box, Grid } from "@mui/material";
+import {updateProductDetailsAction} from '../../redux/actions/actions'
+import ProductDetails from '../../components/productDetails/productDetails';
 import Carouel from '../../components/carosal/carosal';
+import {useSelector,useDispatch} from 'react-redux'
 const useStyles = makeStyles((theme) => ({
     image: {},
     heart: { position: "fixed", right: 420 },
-
 })
 )
 const drawerWidth = 325;
 const Home = () => {
-    const classes = useStyles()
-    const [product, setProduct] = useState(productData[0])
-
+    const classes = useStyles();
+    const dispatch=useDispatch()
+    const {productDetails} =useSelector((state) => state?.reducer)
+    const [product, setProduct] = useState(productDetails)
     const colorChange = (e) => {
         debugger
         const colorsUpdate = product.colors.map(m => {
@@ -33,6 +34,7 @@ const Home = () => {
             return m
         })
         setProduct({ ...product, colors: colorsUpdate })
+        dispatch(updateProductDetailsAction({ ...product, colors: colorsUpdate }))
     }
     const sizeChange = (e) => {
         debugger
@@ -44,7 +46,8 @@ const Home = () => {
             }
             return m
         })
-        setProduct({ ...product, cosizelors: colorsUpdate })
+        setProduct({ ...product, size: colorsUpdate })
+        dispatch(updateProductDetailsAction({ ...product, size: colorsUpdate }))
     }
     return <Box  sx={{padding: { xs: '20px', sm: '', }}}><Grid container spacing={2}>
         <Grid item xs={12} sm={3}>
@@ -61,7 +64,7 @@ const Home = () => {
         </Grid>
         <Grid item xs={12} sm={6} marginTop={"80px"}>
             <Box className={classes.image} component="main" textAlign={'center'}>
-                <FavoriteBorderIcon className={classes.heart} />
+                <FavoriteBorderIcon className={classes.heart}/>
                 <Box className="carousel" sx={{display: { xs: 'block', md: 'none' }}}>
                     <Carouel />
                 </Box>
