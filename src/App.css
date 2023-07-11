@@ -1,0 +1,30 @@
+.MuiTypography-root{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.mainContainer{
+  margin-top: 70px;
+}
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
+  color: #000 !important;
+  font-weight: 500;
+}
+.MuiTabs-indicator.css-1aquho2-MuiTabs-indicator{
+width:0 !important;
+}
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+  min-width: unset !important;
+  padding:12px 10px !important;
+}
+.css-heg063-MuiTabs-flexContainer{
+margin-left:12px
+}
+.MuiBox-root.css-19kzrtu{
+  padding:0px 22px;
+}
+.MuiBox-root.css-1gsv261{
+border-color: transparent;
+}
+.MuiPaper-root.css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
+  border-right: 0px solid;
+}
