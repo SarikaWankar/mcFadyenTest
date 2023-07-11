@@ -23,6 +23,8 @@ const Home = () => {
     const dispatch=useDispatch()
     const {productDetails} =useSelector((state) => state?.reducer)
     const [product, setProduct] = useState(productDetails)
+
+    const {links,note,discription,auther} =product;
     const colorChange = (e) => {
         debugger
         const colorsUpdate = product.colors.map(m => {
@@ -37,7 +39,6 @@ const Home = () => {
         dispatch(updateProductDetailsAction({ ...product, colors: colorsUpdate }))
     }
     const sizeChange = (e) => {
-        debugger
         const colorsUpdate = product.size.map(m => {
             if (e.target.id === m.name) {
                 m.selected = true;
@@ -73,10 +74,10 @@ const Home = () => {
                 </Box>
                 <Box sx={{display: { xs: 'none', md: 'block' }}}>
                 <Footer
-                    links={["Jonathan Simkhai", "Blazers", "Viscose"]}
-                    note={"a note from the editor "}
-                    discription={" The Forte Lurex Linen Viscose Jacket in Mother of Pearl features lunar lavishness by night and by day: a blazer in a linen blend shot with lurex for a shimmering surface that shines like a star in the sky."}
-                    auther={"By MINNA SHIM, Fashion Editor"}
+                    links={links}
+                    note={note}
+                    discription={discription}
+                    auther={auther}
                 />
                 </Box>
             </Box>
@@ -85,10 +86,10 @@ const Home = () => {
             <ProductDetails product={product} colorChange={colorChange} sizeChange={sizeChange} />
             <Box sx={{display: { xs: 'block', md: 'none' }}}>
                 <Footer
-                    links={["Jonathan Simkhai", "Blazers", "Viscose"]}
-                    note={"a note from the editor "}
-                    discription={" The Forte Lurex Linen Viscose Jacket in Mother of Pearl features lunar lavishness by night and by day: a blazer in a linen blend shot with lurex for a shimmering surface that shines like a star in the sky."}
-                    auther={"By MINNA SHIM, Fashion Editor"}
+                     links={links}
+                     note={note}
+                     discription={discription}
+                     auther={auther}
                 />
                 </Box>
         </Grid>
